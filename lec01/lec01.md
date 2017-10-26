@@ -81,6 +81,77 @@ public class WelcomeWithThreeMessages {
 ```
 Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/WelcomeWithThreeMessages.java)
 
-Kolejne przykłady:
+#### Kolejne przykłady:
 
 - [ComputeExpression](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ComputeExpression.java) - program, który wyliczy wartość przykłądowego wyrażenia.
+
+## Anatomia Javy
+
+#### Nazwa klasy
+Every Java program must have at least one class. Each class has a name. By convention, class names start with an uppercase letter. In this example, the class name is Welcome. 
+
+```java
+public class HelloWorld{
+  //---
+}
+```
+
+#### Metoda `main`
+In order to run a class, the class must contain a method named main. The program is executed from the main method. 
+
+```java
+public static void main(String [] args){
+  //---
+}
+```
+
+#### Instrukcja
+A statement represents an action or a sequence of actions. 
+
+```java
+System.out.println("Hello world!");
+```
+
+#### Zakończnie instrukcji - średnik - ;
+Every statement in Java ends with a semicolon (;).
+
+#### Słowa kluczowe języka (reserved words)
+Reserved words or keywords are words that have a specific meaning to the compiler and cannot be used for other purposes in the program. For example, when the compiler sees the word class, it understands that the word after class is the name for the class. 
+
+Znane nam słowa kluczowe to:
+- public 
+- class
+- static 
+- void
+
+#### Bloki instrukcji - nawiasy klamrowe - {}
+A pair of braces in a program forms a block that groups components of a program. 
+
+#### Symbole specjalne
+
+| Symbol | Znaczenie                    |
+| ------ | ---------------------------- |
+| {}     | Oznacza blok instrukcji      |
+| ()     | Używane z metodami           |
+| []     | Oznacza tablicę              |
+| //     | Komentarz jednolinijkowy     |
+| " "    | Obejmuje ciąg znaków - tekst |
+| ;      | Orznacza koniec instrukcji   |
+
+## Błedy 
+
+- [Błąd składniowy](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowSyntaxErrors.java) (Syntax Errors)
+- [Błąd czasu wykonania](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowRuntimeErrors.java) (Runtime Errors)
+- [Błąd logiczny](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowLogicErrors.java) (Logic Erors)
+
+
+## Podstawowe operatory
+
+| Operator | Nazwa                       | Przykład                                 |
+| -------- | --------------------------- | ---------------------------------------- |
+| +        | Operator dodawania          | 2+2 => 4                                 |
+| -        | Operator odejmowania        | 6-4 => 2                                 |
+| *        | Operator mnożenia           | 3*4 => 12                                |
+| /        | Operator dzielenia          | 25/7 => 3, bo do w tym przypadku dzielimy liczby całkowite |
+| %        | Operator reszty z dzielenia | 35 % 12 => 11, bo 35=2*12+11             |
+
