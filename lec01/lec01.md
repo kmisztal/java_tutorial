@@ -203,7 +203,7 @@ Schemat tworzenia zmiennych jest prosty
 | `double t = 4;`     | //..                                     |
 | `double pi = 3.14;` | //..                                     |
 
-
+Bardziej zaawansowany przykład
 
 ```java
 public class ComputeArea {
