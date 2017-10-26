@@ -155,3 +155,72 @@ A pair of braces in a program forms a block that groups components of a program.
 | /        | Operator dzielenia          | 25/7 => 3, bo do w tym przypadku dzielimy liczby całkowite |
 | %        | Operator reszty z dzielenia | 35 % 12 => 11, bo 35=2*12+11             |
 
+[Przykład](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/Operators.java) na podstawowe operatory.
+
+Operatory * / % mają wyższy priorytet niż oparetory + -.
+
+W przypadku, gdy w wyrażaniu występują operatory o tym samym priorytecie wykonywane są w kolejności od lewej do prawej.
+
+[Przykład](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/OperatorsPriority.java) na piorytet opratorów. 
+
+Więcej o operatorach można znaleźć na [tej stronie](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html).
+
+## Proste programowanie - defininiowanie zmiennych
+
+Pozwalają one na przechowywanie danych różnego typu. Wyróżniamy dwie fazy tworzenia zmiennej:
+- **Deklaracja** - tutaj określamy typ i nazwę zmiennej
+- **Inicjalizacja** - nadanie wartości zmiennej
+
+```java
+public class Variable {
+    public static void main(String[] args) {
+
+        int liczba; // Deklaracja
+
+        liczba = 5; // Inicjalizacja
+    }
+}
+```
+Zaczynając od początku tworzymy klasę Zmienne (pamiętaj, aby zapisać plik jako *Variable.java*), a w niej tworzymy metodę *main()*. Dalej następuje zadeklarowanie zmiennej typu int i nazwie *liczba* (**deklaracja**), a w kolejnej linii nadajemy jej wartość 5 (**inicjalizacja**). Oczywiście możemy dokonać dwie powyższe instrukcje w jednej linii:
+
+```java
+public class Variable2{
+    public static void main(String[] args){
+        char znak = 'A';
+    }
+}
+```
+
+Schemat tworzenia zmiennych jest prosty
+
+> nazwa_typu nazwa_zmiennej = wartość;
+
+| Przykład            | Wyjaśnienie                              |
+| ------------------- | ---------------------------------------- |
+| `int x;`            | Deklaracja zmiennej o nazwie `x` przechowującej wartości całkowite |
+| `int y = 5;`        | Deklaracja i inicjalizacja zmiennej `y` przechowującej wartości całkowite o wartości `5` |
+| `double t;`         | //..                                     |
+| `double t = 4;`     | //..                                     |
+| `double pi = 3.14;` | //..                                     |
+
+
+
+```java
+public class ComputeArea {
+    public static void main(String[] args) {
+        double radius; // Declare radius
+        double area; // Declare area
+
+        // Assign a radius
+        radius = 20; // New value is radius
+
+        // Compute area
+        area = radius * radius * 3.14159;
+
+        // Display results
+        System.out.println("The area for the circle of radius " +
+                radius + " is " + area);
+    }
+}
+```
+
