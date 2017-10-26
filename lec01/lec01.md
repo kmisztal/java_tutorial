@@ -63,10 +63,13 @@ public class HelloWorld {
   }
 }
 ```
+Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/HelloWorld.java)
+
 ### Kompilacja
 
 You can port a source program to any machine with appropriate compilers. The source program must be recompiled, however, because the object program can only run on a specific machine. Nowadays computers are networked to work together. Java was designed to run object programs on any platform. With Java, you write the program once, and compile the source program into a special type of object code, known as bytecode. The bytecode can then run on any computer with a Java Virtual Machine, as shown below. Java Virtual Machine is a software that interprets Java bytecode. 
 
+## Przykłady
 ```java
 public class WelcomeWithThreeMessages { 
     public static void main(String[] args) { 
@@ -76,3 +79,8 @@ public class WelcomeWithThreeMessages {
     }  
 }
 ```
+Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/WelcomeWithThreeMessages.java)
+
+Kolejne przykłady:
+
+- [ComputeExpression](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ComputeExpression.java) - program, który wyliczy wartość przykłądowego wyrażenia.
