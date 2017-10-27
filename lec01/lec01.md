@@ -1,3 +1,11 @@
+# Programowanie obiektowe w Javie - lec01
+
+
+
+
+
+# Wprowadzenie
+
 ### Programy komputerowe
 
 **Programy komputerowe**, czyli software, to instrukcje wykonywane w komputerze. Programy komputerowe napisane są wykorzystując języki programowania.
@@ -22,37 +30,34 @@ Język wysokiego poziomu, jak np. język angielsko-podoby jest łątwy w nauczen
 area = 5 * 5 * 3.1415;
 ```
 
-### Interpreting/Compiling Source Code
+### Interpreteacja/kompilacja kodu źródłowego (interpreting/compiling source code)
 
-A program written in a high-level language is called a source program or source code. Because a computer cannot understand a source program, a source program must be translated into machine code for execution. The translation can be done using another programming tool called an interpreter or a compiler.
+Programy napisany w języku wysokiego poziomu nazywany programem źródłowym lub kodem źródłowym. Komputer nie może zrozumieć kodu źródłowego i musi on zostać przetłumaczony na kod maszynowy, aby mógł byc uruchomiony. Takie tłumaczenie może zostać wykonane przez narzędzie programistyczne zwane interpreterem (interpreter) lub kompilatorem (compiler).
 
-### Interpreting Source Code
+##### Interpretacja kodu źródłowego (interpreting source code)
 
-An interpreter reads one statement from the source code, translates it to the machine code or virtual machine code, and then executes it right away, as shown in the following figure. Note that a statement from the source code may be translated into several machine instructions.
-
-
-### Compiling Source Code
-
-A compiler translates the entire source code into a machine-code file, and the machine-code file is then executed, as shown in the following figure.
+Interperter czyta instrukcje kodu źródłowego i tłumaczy je na kod maszynowy albo wirtualny kod maszynowy, a następnie taki kod jest wykonywany.
 
 
-## Why Java?
+##### Kompilacja kodu źródłowego (compiling source code)
 
-The answer is that Java enables users to develop and deploy applications on the Internet for servers, desktop computers, and small hand-held devices. The future of computing is being profoundly influenced by the Internet, and Java promises to remain a big part of that future. Java is the Internet programming language.
+Kompilator tłumaczy cały kod źródłowy na kod maszynowy i taki kod maszynowy moze zostać uruchomiony. 
 
-- Java Is Simple - Java is partially modeled on C++, but greatly simplified and improved. Some people refer to Java as "C++--" because it is like C++ but with more functionality and fewer negative aspects.
-- Java Is Object-Oriented - Java is inherently object-oriented. Although many object-oriented languages began strictly as procedural languages, Java was designed from the start to be object-oriented. Object-oriented programming (OOP) is a popular programming approach that is replacing traditional procedural programming techniques.  One of the central issues in software development is how to reuse code. Object-oriented programming provides great flexibility, modularity, clarity, and reusability through encapsulation, inheritance, and polymorphism. 
-- Java Is Distributed - Distributed computing involves several computers working together on a network. Java is designed to make distributed computing easy. Since networking capability is inherently integrated into Java, writing network programs is like sending and receiving data to and from a file. 
-- Java Is Interpreted - You need an interpreter to run Java programs. The programs are compiled into the Java Virtual Machine code called bytecode. The bytecode is machine-independent and can run on any machine that has a Java interpreter, which is part of the Java Virtual Machine (JVM). 
-- Java Is Robust - Java compilers can detect many problems that would first show up at execution time in other languages.  Java has eliminated certain types of error-prone programming constructs found in other languages. Java has a runtime exception-handling feature to provide programming support for robustness. 
-- Java Is Secure - Java implements several security mechanisms to protect your system against harm caused by stray programs. 
-- Java Is Architecture-Neutral - **Write once, run anywhere** With a Java Virtual Machine (JVM), you can write one program that will run on any platform.
-- Java Is Portable - Because Java is architecture neutral, Java programs are portable. They can be run on any platform without being recompiled. 
-- Java's Performance - Java’s performance Because Java is architecture neutral, Java programs are portable. They can be run on any platform without being recompiled. 
-- Java Is Multithreaded - Multithread programming is smoothly integrated in Java, whereas in other languages you have to call procedures specific to the operating system to enable multithreading.
-- Java Is Dynamic - Java was designed to adapt to an evolving environment. New code can be loaded on the fly without recompilation. There is no need for developers to create, and for users to install, major new software versions. New features can be incorporated transparently as needed. 
 
-## Pierwszy program
+## Dlaczego Java?
+
+Java umożliwia deweloperom przygotownanie aplikacji uruchamiany na serwerach, komputerach osobistych a nawet urządzeniach mobilnych. Ponadto:
+
+- **Java jest prosta** - Java jest wzorowana na jezyku C++, ale została znacząco uproszczona i poprawiona. Niekiedy wskzauje się, że Java to język "C++--", czyli C++, ale z większymi możliwościami oraz zredukowanymi negatywnymi aspektami.
+- **Java jest zorientowana obiektowo** - Java jest językiem zorientowanym obiektowo, co to oznacza dowiecie się Państwo trochę później, teraz należy rozumieć to w ten sposób, że jest jezykiem który umożliwia lepsze odwzorowanie otaczającego świata w postaci programu komputerowego oraz jest to język w którym pracujemy z obiektami.
+- **Java jest językiem wsprierającym obliczenia rozproszone**  - obliczenia rozproszone wyonywane są na kilku komputerach pracujących razem w sieci. Java została zprojektowana tak, aby uczynić takie obliczenia łatwymi do skonfigurowania.
+- **Java jest językiem interpretowalnym** - konieczne jest posiadanie interpretera do uruchomienia programów napisaych w JavieYou need an interpreter to run Java programs. The programs are compiled into the Java Virtual Machine code called bytecode. The bytecode is machine-independent and can run on any machine that has a Java interpreter, which is part of the Java Virtual Machine (JVM). 
+- **Java jest językiem bezpiecznym** - Java implementuje mechanizmy bezpieczeństwa zabezpieczające system przed nieporządane programy. 
+- **Java językiem niezależnym od architektury** - **Write once, run anywhere**, to stwierdzenie przyświecało twórcom języka. Dzięki wykorzystaniu wirtualnej maszyny Javy (Java Virtual Machine (JVM)), dlatego możemy napisać program raz i uruchomić na dowolnej platformie.
+- **Java językiem przenośnym** - Ponieważ Java jest niezleżna od archiotektury, dlatego możesz uruchomić aplikację w Javie bez konieczności rekompilacji przy zmienie platformy. 
+- **Java jest językiem wpierającym programowanie wielowątkowe** - Programowanie wielowątkowe jest w łatwy sposób dostepne w Javie.
+
+# Pierwszy program
 
 ```java
 // This program prints Welcome to Java! 
@@ -62,11 +67,25 @@ public class HelloWorld {
   }
 }
 ```
-Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/HelloWorld.java)
+Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/HelloWorld.java).
 
 ### Kompilacja
 
-You can port a source program to any machine with appropriate compilers. The source program must be recompiled, however, because the object program can only run on a specific machine. Nowadays computers are networked to work together. Java was designed to run object programs on any platform. With Java, you write the program once, and compile the source program into a special type of object code, known as bytecode. The bytecode can then run on any computer with a Java Virtual Machine, as shown below. Java Virtual Machine is a software that interprets Java bytecode. 
+Program nalezy zapisać pod nazwą "HelloWorld.java". 
+
+Aby **skompilować program** należy wydać polecenie:
+
+```bash
+javac HelloWorld.java
+```
+
+W efekcie zostanie utworzony plik "HelloWorld.class" - zawierający bytecode Javy - więcej o tym w przyszłości. To ten kod jest interpretowany przez wirtualną maszynę Javy.
+
+Aby **uruchomić program** należy wydać polecenie:
+
+```bash
+java HelloWorld
+```
 
 ## Przykłady
 ```java
@@ -84,10 +103,10 @@ Program dostępny także pod [tym adresem](https://github.com/kmisztal/java_tuto
 
 - [ComputeExpression](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ComputeExpression.java) - program, który wyliczy wartość przykłądowego wyrażenia.
 
-## Anatomia Javy
+# Anatomia Javy
 
 #### Nazwa klasy
-Every Java program must have at least one class. Each class has a name. By convention, class names start with an uppercase letter. In this example, the class name is Welcome. 
+Każdy program w Javie musi mieć co najmniej jedją klasę. Klasa ma nazwę. Według konwencji nazewniczej nazwy klas zaczynają się z wielkiej litery - w naszym przypadku jest to `HelloWorld` 
 
 ```java
 public class HelloWorld{
@@ -96,7 +115,7 @@ public class HelloWorld{
 ```
 
 #### Metoda `main`
-In order to run a class, the class must contain a method named main. The program is executed from the main method. 
+Klasę można uruchomić, jeśli zawiera metodę `main` - jej sygnatura znajduje się poniżej. Uruchomienie programu polega na uruchomieniu metody `main`:  
 
 ```java
 public static void main(String [] args){
@@ -105,26 +124,26 @@ public static void main(String [] args){
 ```
 
 #### Instrukcja
-A statement represents an action or a sequence of actions. 
+Instrukcja to reprezentacja działania lub sekwencji działań. Przykład pojedynczego działania polegajacego na wyświetleniu tekstu "Hello world" znajduje się poniżej:
 
 ```java
 System.out.println("Hello world!");
 ```
 
 #### Zakończnie instrukcji - średnik - ;
-Every statement in Java ends with a semicolon (;).
+Każda instrukcja w Javie kończy się średnikiem (;).
 
 #### Słowa kluczowe języka (reserved words)
-Reserved words or keywords are words that have a specific meaning to the compiler and cannot be used for other purposes in the program. For example, when the compiler sees the word class, it understands that the word after class is the name for the class. 
+Słowa kluczowe języka (reserved words or keywords) to słowa o specyficznym znaczeniu w języku. Kompilator widząc je interpretuje je w specyficzny sposób - dlatego nie mogą byc one uzywane w dowolny sposób przez programistę. Np.: kompilator widzą csłowo `class` spodziewa się, że następujące po nim słowo to nazwa klasy. 
 
-Znane nam słowa kluczowe to:
+Znane nam słowa kluczowe, zawarte w naszym przykładzie to:
 - public 
 - class
 - static 
 - void
 
 #### Bloki instrukcji - nawiasy klamrowe - {}
-A pair of braces in a program forms a block that groups components of a program. 
+Para nawiasów klamrowych tworzy tzw. blok instrukcji - wykorzytujemy je aby nadać strukturę instrukcjom występującym w programie. 
 
 #### Symbole specjalne
 
@@ -137,11 +156,11 @@ A pair of braces in a program forms a block that groups components of a program.
 | " "    | Obejmuje ciąg znaków - tekst |
 | ;      | Orznacza koniec instrukcji   |
 
-## Błedy 
+## Błędy 
 
-- [Błąd składniowy](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowSyntaxErrors.java) (Syntax Errors)
-- [Błąd czasu wykonania](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowRuntimeErrors.java) (Runtime Errors)
-- [Błąd logiczny](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowLogicErrors.java) (Logic Erors)
+- [Błąd składniowy](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowSyntaxErrors.java) (Syntax Errors) - powstały w wyniku błędnego użycia składni języka.
+- [Błąd czasu wykonania](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowRuntimeErrors.java) (Runtime Errors) - błąd pojawiający się w trakcie działania programu w przypadku zaistniena sytuacji wyjątkowej.
+- [Błąd logiczny](https://github.com/kmisztal/java_tutorial/blob/master/lec01/src/ShowLogicErrors.java) (Logic Erors) - błąd powstały w wyniku błędnej konstrukcji logicznej zawartej w programie.
 
 
 ## Podstawowe operatory
@@ -207,16 +226,16 @@ Bardziej zaawansowany przykład
 ```java
 public class ComputeArea {
     public static void main(String[] args) {
-        double radius; // Declare radius
-        double area; // Declare area
+        double radius; // deklaracja zmiennej 
+        double area; // deklaracja zmiennej
 
-        // Assign a radius
-        radius = 20; // New value is radius
+        // przypisanie wartości promienia
+        radius = 20; // nowa wartość promienia
 
-        // Compute area
+        // wyznaczenie wartości pola koła
         area = radius * radius * 3.14159;
 
-        // Display results
+        // wyświetlenie wartości pola koła
         System.out.println("The area for the circle of radius " +
                 radius + " is " + area);
     }
