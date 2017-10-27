@@ -206,3 +206,91 @@ public class FahrenheitToCelsius {
 | --var    | predekrementacja  | int j = --i; // j = 0, i = 0 |
 | var--    | postdekrementacja | int j = i--; // j = 1, i = 0 |
 
+## Relacje
+
+| Operator | Nazwa                  | Przykład (radius = 5) | Wynik |
+| -------- | ---------------------- | --------------------- | ----- |
+| <        | mniejszy niż           | radius < 0            | false |
+| <=       | mniejszy lub równy niż | radius <= 0           | false |
+| >        | większy niż            | radius > 0            | true  |
+| >=       | większy lub równy niż  | radius >= 0           | true  |
+| ==       | równy                  | radius == 0           | false |
+| !=       | różny                  | radius != 0           | true  |
+
+
+
+## Instrukcja sterująca - `if`
+
+> jeśli (zachodzi warunek) to
+>
+> ​	wykonaj blok instrukcji
+
+w języku Java wyrażamy jako:
+
+```java
+if (zachodzi_warunek){
+    // blok instrukcji - wykonywany jeśli zachodzi_warunek ma wartość logiczną true
+}
+```
+
+#### Przykład
+
+```java
+import java.util.Scanner;
+
+public class SimpleIfDemo {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = input.nextInt();
+
+        if (number % 5 == 0)
+            System.out.println("HiFive");
+
+        if (number % 2 == 0)
+            System.out.println("HiEven");
+    }
+}
+```
+
+#### Konstrukcja `if-else`	
+> jeśli (zachodzi warunek) to
+>
+> ​	wykonaj blok instrukcji
+>
+> w przeciwnym przypadku:
+>
+> ​	wykonaj inny blok instrukcji
+
+w języku Java wyrażamy jako:
+
+```java
+if (zachodzi_warunek){
+    // blok instrukcji - wykonywany jeśli zachodzi_warunek ma wartość logiczną true
+} else{
+    // inny blok instrukcji - wykonywany jeśli zachodzi_warunek ma wartość logiczną false
+}
+```
+
+#### Przykład
+
+```java
+import java.util.Scanner;
+
+public class OddEvenTesting {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Poadj liczbę całkowitą:");
+        
+        int x = sc.nextInt();
+
+        if (x % 2 == 0){
+            System.out.println("Liczba jest parzysta");
+        } else {
+            System.out.println("Liczba jest nieparzysta");
+        }
+    }
+}
+```
+
