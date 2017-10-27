@@ -1,23 +1,22 @@
-### Programs
+### Programy komputerowe
 
-Computer programs, known as software, are instructions to the computer.
-Programs are written using programming languages.
+**Programy komputerowe**, czyli software, to instrukcje wykonywane w komputerze. Programy komputerowe napisane są wykorzystując języki programowania.
 
-### Machine Language
+### Język maszynowy (machine language)
 
-Machine language is a set of primitive instructions built into every computer. The instructions are in the form of binary code, so you have to enter binary codes for various instructions. Program with native machine language is a tedious process. Moreover the programs are highly difficult to read and modify. For example, to add two numbers, you might write an instruction in binary like this:
+**Język maszynowy** to zbiór prymitywnych instukcji wbudowanych w każdym komputerze. Instrukcje zapisane są w postaci binarnego kodu, więc trzeba wprowadzić kody binarne dla różnych instrukcji. Program z natywnym językiem maszynowym jest procesem. Programy na tym poziomie są bardzo trudne do odczytania i modyfikowania. Na przykład, aby dodać dwie liczby, możesz napisać instrukcję w binarny sposób:
 
 ``` 1101101010011010 ```
 
-### Assembly Language
+### Assemblery (assembly language)
 
-Assembly languages were developed to make programming easy. Since the computer cannot understand assembly language, however, a program called assembler is used to convert assembly language programs into machine code. For example, to add two numbers, you might write an instruction in assembly code like this:
+**Języki asemblera** (zwyczajowo asemblery) to rodzina języków programowania niskiego poziomu, których jedno polecenie odpowiada zasadniczo jednemu rozkazowi procesora. Asemblery zostały opracowane aby przygotowanie nowych programów komputerowych było prostsze - kod w assemblerze jest konwertowany do instrukcji języka maszynowego. Dla przykładu, aby dodać dwie liczy można użyć instrukcji:
 
 ``` ADDF3 R1, R2, R3 ```
 
-### High-Level Language
+### Języki wysokiego poziomu (high-Level language)
 
-The high-level languages are English-like and easy to learn and program. For example, the following is a high-level language statement that computes the area of a circle with radius 5:
+Język wysokiego poziomu, jak np. język angielsko-podoby jest łątwy w nauczeniu, dlatego opracowano języki kótre wykorzystując składnię zbliżoną do języka angielskiego pozwalają na pisanie programów. Dla przykąldu, aby obliczyć pole koła o promieniu 5 nalezy wykonać instrukcję:
 
 ```java
 area = 5 * 5 * 3.1415;
