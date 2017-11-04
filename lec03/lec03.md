@@ -44,6 +44,8 @@ możemy przedstawić tzw. tablice prawdy
 | True        | False       | False    | True     |
 | True        | True        | True     | True     |
 
+ponadto:
+
 | Wyrażenie A | `!A`  |
 | ----------- | ----- |
 | False       | True  |
