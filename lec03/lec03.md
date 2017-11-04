@@ -37,12 +37,12 @@ Dla opratorów logicznych
 
 możemy przedstawić tzw. tablice prawdy
 
-| Wyrażenie A | Wyrażenie B | `A && B` | `A || B` |
-| ----------- | ----------- | -------- | -------- |
-| False       | False       | False    | False    |
-| False       | True        | False    | True     |
-| True        | False       | False    | True     |
-| True        | True        | True     | True     |
+| Wyrażenie A | Wyrażenie B | A && B | A \|\| B |
+| ----------- | ----------- | ------ | -------- |
+| False       | False       | False  | False    |
+| False       | True        | False  | True     |
+| True        | False       | False  | True     |
+| True        | True        | True   | True     |
 
 ponadto:
 
