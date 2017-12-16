@@ -54,7 +54,7 @@ Proszę napisać program, który wykorzystując pętle **for** wypisze:
 Napisz funkcję (statyczną w klasie), która przyjmuje trzy liczby i wyznacza ich:
 
 - sumę, czyli a+b+c
-- potęgę abc
+- iloczyn abc
 
 ## Zadanie 10
 
