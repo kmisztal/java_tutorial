@@ -13,7 +13,7 @@ szablonu jest obiekt. Każdy obiekt posiada swój stan, który czasami jest nazy
 własności. Czyli z każdym obiektem związane są jakieś dane. Dodatkowo z obiektem
 możemy wykonywać jakieś akcje, które definiują metody. 
 
-![Circle](E:\github\java_tutorial\lec04\images\Circle.png)
+![Circle](https://github.com/kmisztal/java_tutorial/blob/master/lec04/images/Circle.png)
 
 To jest schemat klasy w języku UML (języku służącym do modelowania różnego rodzaju systemów). Na powyzszym obrazku widać, że klasa **Circle** składa się z:
 
