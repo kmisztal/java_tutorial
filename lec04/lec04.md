@@ -530,3 +530,189 @@ System.out.println(c2.getRadius());
 
 
 > Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html
+
+
+
+### `BigInteger` oraz `BigDecimal`
+
+```java
+BigInteger a = new BigInteger("9223372036854775807");
+BigInteger b = new BigInteger("2");
+BigInteger c = a.multiply(b); // 9223372036854775807 * 2
+System.out.println(c); 
+```
+
+```java
+BigDecimal a = new BigDecimal(1.0);
+BigDecimal b = new BigDecimal(3);
+BigDecimal c = a.divide(b, 20, BigDecimal.ROUND_UP);
+System.out.println(c);
+```
+
+
+
+### `Random`
+
+```java
+// Importowanie biblioteki potrzebnej do losowania liczb
+import java.util.Random;
+ 
+public class Main {
+ 
+    public static void main(String[] args) { 
+        Random r = new Random(); 
+ 
+        /*
+         * Losowanie liczb odbywa się po wywołaniu którejś z metod obiektu r
+         * (klasy Random).
+         * W zależności od typu liczby, którą należy wylosować, trzeba wybrać
+         * odpowiednią metodę np.
+         *     r.nextInt() - wylosuje liczbę całkowitą z zakresu int,
+         *     r.nextFloat() - wylosuje liczbę rzeczywistą z zakresu float,
+         *     itd. lista dostępnych metod klasy Random wyświetli się po
+         *     wpisaniu nazwy obiektu i kropki w tym przypadku: r.
+         *
+         * W przypadku zapisu r.nextInt(n); wylosowana zostanie liczba z
+         * zakresu od 0 do n-1, czyli chcąc wylosować liczbę z zakresu
+         * od 1 do 10 (domkniętego) należy zapisać:
+         * r.nextInt(10)+1;
+         */
+ 
+        // Losowanie liczby z zakresu [0,10] do zmiennej a.
+        int a = r.nextInt(11); // deklaracja i definicja zmiennej
+        System.out.println(a);
+ 
+        // Losowanie liczby z zakresu [-5,15] i wyświetlenie jej na konsolę.
+        System.out.println( r.nextInt(21)-5 );
+        // 21, bo w przedziale [-5,15] jest 21 liczb i -5,
+        // bo to najmniejsza liczba w zakresie.
+ 
+        // Losowanie liczby z zakresu [-20,-10] do zmiennej a.
+        a = r.nextInt(11)-20;
+        System.out.println(a);
+        // 11, bo w przedziale [-20,10] jest 11 liczb i -20,
+        // bo to najmniejsza liczba w zakresie.
+ 
+        // Losowanie liczb z zakresu [x,y], gdzie x i y, to zmienne
+        // całkowitoliczbowe o dowolnej wartości.
+        int x = 7; // To wartość przykładowa
+        int y = 15; // To wartość przykładowa
+ 
+        a = r.nextInt(y-x+1)+x; // Od większej (y) odejmujemy mniejszą (x) i
+                              // dodajemy 1 - to daje liczność zbioru
+                              // (w losowaniu), a następnie dodajemy
+                              // mniejszą (x), bo to najmniejsza liczba
+                              // w zakresie.
+        System.out.println(a);
+ 
+        // Sprawdzenie powyższego przykładu dla liczb ujemnych:
+        x = -27; // To wartość przykładowa
+        y = -15; // To wartość przykładowa
+        a = r.nextInt(y-x+1)+x;
+        System.out.println(a);
+ 
+        // Sprawdzenie powyższego przykładu w sytuacji, kiedy jedna liczba
+        // jest ujemna, a druga dodatnia
+        x = -7; // To wartość przykładowa
+        y = 15; // To wartość przykładowa
+        a = r.nextInt(y-x+1)+x;
+        System.out.println(a);
+    }
+}
+```
+
+
+
+### Autoboxing oraz Unboxing
+
+#### Boxing
+
+Automatyczne przekształcenie z typu prostego do obiektowego. 
+Typ prosty (i)  -> typ obiektowy (r), tak, że : r.value() == i
+
+| Typ przed | Typ po    |
+| --------- | --------- |
+| boolean   | Boolean   |
+| byte      | Byte      |
+| char      | Character |
+| short     | Short     |
+| int       | Integer   |
+| long      | Long      |
+| float     | Float     |
+| double    | Double    |
+
+#### Unboxing
+
+Automatyczne przekształcenie z typu obiektowego do prostego. Typ obiektowy (r)  -> typ prosty (i), tak, że i == r.value()
+
+| Typ przed | Typ po    |
+| --------- | --------- |
+| Boolean   | boolean   |
+| Byte      | byte      |
+| Char      | character |
+| Short     | short     |
+| Integer   | int       |
+| Long      | long      |
+| Float     | float     |
+| Double    | double    |
+Kiedy zachodzą te automatyczne konwersje?
+
+- przy przypisaniach,
+- przy przekazywaniu argumentów (metodom i konstruktorom),
+- przy zwrocie wyników.
+
+```java
+public class AutoBoxing {
+
+  private int intField;
+
+  public AutoBoxing() {
+    // Konwersje przy przypisaniu
+    int x = 1;
+    Integer a = x;
+    int y = a;
+    System.out.println("Konwersje przy przypisaniu: " + a + " " + y);
+
+    // Konwersje przy wywołaniu metod
+    methodInvocationConversion1(x);
+    methodInvocationConversion2(a);
+
+    // Konwersje przy zwrocie wyników  
+    y = getIntFromInteger();
+    a = getIntegerFromInt();
+    System.out.println("Konwersje przy zwrocie wyniku: " + a + " " + y);
+  }
+
+  public AutoBoxing(Integer i) {
+    intField = i;
+    System.out.println("W konstruktorze bezparametrowym: " + intField);
+  }
+  
+  void methodInvocationConversion1(Integer p) {
+    System.out.println("Parametr Integer, argument int " + p);
+  }
+
+  void methodInvocationConversion2(int p) {
+    System.out.println("Parametr int, argument Integer " + p);
+  }
+
+  int getIntFromInteger() {
+    return new Integer(2);
+  }
+
+  Integer getIntegerFromInt() {
+    return 2;
+  }
+
+  public static void main(String[] args) {
+     new AutoBoxing();
+     // Zauważmy, że konstruktor możemy wołać z arg. int lub Integer
+     new AutoBoxing(3);
+     new AutoBoxing(new Integer(3));
+  }
+}
+```
+
+
+
+> Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html
