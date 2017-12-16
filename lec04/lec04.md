@@ -1,5 +1,66 @@
 # Programowanie obiektowe w Javie - lec04
 
+# Funkcje
+
+Funkcje to specjalnie wydzielony fragment kodu umożliwający jego wielokrotne użycie. Funkcje definiujemy wykorzystując następującą konstrukcję:
+
+```java
+nazwa_typu_zwracanego nazwa_metody(typ_argumentu1 nazwa_argumentu1, typ_argumentu2 nazwa_argumentu2, ... ){
+  // co metoda robi
+  
+  
+  return .....; //zwrócić 
+}
+```
+
+Unikalny ifentyfikator funkcji, czyli sposób rozróżniania funkcji, składa się z nazwy funkcji oraz typów argumentów przjmowanych przez funkcję, np. dla funkcji:
+
+```java
+double max(double x, double y){
+  return x > y ? x : y;
+}
+```
+
+jej identyfikator to `max(double,double)`. Funkcje nie różnicujemy po typie zwracanym.
+
+### Variadic function
+
+Istnieje możliwość zdefiniowana funkcji przujmującej dowolną liczbę argumentów, wówczas wykorzystujemy specjalny znak `...` (trzy kropki). Przykład
+
+```java
+public class VF {
+    public static double sum(double ... a){
+        //https://en.wikipedia.org/wiki/Variadic_function
+        double ret = 0;
+        for(int i = 0; i < a.length; i++){
+            ret += a[i];
+        }
+        return ret;
+    }
+
+    public static void main(String [] args) {
+        double x = sum(2.4, 5.6);
+        System.out.println(x);
+
+        double y = sum(2, 3, 4);
+        System.out.println(y);
+    }
+}
+
+```
+
+Lista "dowolnych" parametrów dostępna jest w metodzie w postaci tablicy.
+
+### `void`
+
+Istanieje możliwość napisania metody, która nic nie zwraca, wówczas wykorztujemy słowo klucozwe `void` do określenia typu zwracanego przez funkcję:
+
+```java
+void print(){
+  System.out.println("Ala ma kota");
+}
+```
+
 
 
 
@@ -52,7 +113,7 @@ Tak wygląda to wizualnie, natomiast w praktyce to doskonale Państwo wiecie, ż
 
     ```java
     double getArea(){
-      return Math.PI * radius;
+      return Math.PI * radius * radius;
     }
     ```
 
@@ -110,7 +171,7 @@ public class Circle {
     }
 
     double getArea() {
-        return Math.PI * radius;
+        return Math.PI * radius * radius;
     }
 
     double getRadius() {
@@ -445,5 +506,27 @@ public class Circle {
 > Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 
 ### Przekazywanie obiektów do metody a przekazywanie zmiennych typu prostego
+
+Należy pamiętać o tym, że w przypadku klas mamy do czynienia z referencjami:
+
+```java
+int a = 5;
+int b = a;
+System.out.println(a);
+System.out.println(b);
+a = 7;
+System.out.println(a);
+System.out.println(b);
+
+Circle c1 = new Circle(10);
+Circle c2 = c1;
+System.out.println(c1.getRadius());
+System.out.println(c2.getRadius());
+c1.setRadius(13);
+System.out.println(c1.getRadius());
+System.out.println(c2.getRadius());
+```
+
+
 
 > Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html
