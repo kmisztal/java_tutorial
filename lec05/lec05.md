@@ -107,9 +107,18 @@ W języku Java w przeciwieństwie do innych nie występuje dziedziczenie wielokr
 
 > Wszystkie klasy w Javie dziedziczą po klasie `Object`
 
-Dziedziczenie 
+Dziedziczenie generuje tak na prawdę drzewko
 
-![https://docs.oracle.com/javase/tutorial/figures/java/classes-object.gif](Drzewo dziedziczenia)
+![Drzewo dziedziczenia](https://docs.oracle.com/javase/tutorial/figures/java/classes-object.gif)
+
+Dziedzienie w Javie realizowane jest przez użycie słowa `extends`, np.:
+
+```java
+class A extends B{
+}
+```
+
+
 
 #### Przykład
 
@@ -181,6 +190,8 @@ public class Firma{
 
 ### Kolejność wywoływania konstruktorów
 
+Najepierw wywoływany jest konstruktor klasy bazowej a potem pochodnej. W klasie bazowej musi znaleźć się odpowiedni konstruktor, który pasuje kontekstowo.
+
 ```java
 class A{
   A(){
@@ -200,6 +211,38 @@ w efekcie dostaniemy
 ```bash
 Konstruktor A
 Konstruktor B
+```
+
+### `super`
+
+Słowo `super` pozwala na dostęp do metod klasy bazowej (nadrzędnej).
+
+```java
+class A {
+  int x;
+  A(int x){
+    this.x = x;
+  }
+  
+  @Override
+  String toString(){
+    return "x: " + this.x;
+  }
+  
+}
+
+class B extends A {
+  int y;
+  B(int x, int y){
+    super(x); // wywołanie konstruktora klasy bazowej
+    this.y = y;
+  }
+  
+  @Override
+  String toString(){
+    return super.toString() + " y: " + this.y; // wywołanie metody z klasy bazowej
+  }
+}
 ```
 
 
@@ -271,9 +314,7 @@ class Shapes {
 }
 ```
 
-
-
-# 
+> Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html
 
 
 
