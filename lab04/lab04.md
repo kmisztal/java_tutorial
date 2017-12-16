@@ -26,7 +26,7 @@ Proszę napisać funkcję przeliczającą stopnie Celcjusza na Fahrenheita.
 
 Rozwiązanie [FunctionIntro](https://github.com/kmisztal/java_tutorial/blob/master/lab04/src/FunctionInto.java)
 
-### Zadanie 4
+### 
 
 
 
