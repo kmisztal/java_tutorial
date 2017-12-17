@@ -29,7 +29,7 @@ Napisz funkcję przyjmującą jako argument tablicę wykonującą następującą
 - `maxIndex` - funkcja znajduje indeks (pozycję) na której w tablicy znajduje sie największy element
 - `sum` - funkcja zwraca sumię wszystkich elementów w tablicy
 - `prod` - funkcja zwraca iloczyn wszystich elementów w tabliczy
-- `smooth` - funkcja wygładza elementy w tablicy, tzn. sprawia, że nie odstają one znacząco od średniego zachowania, w ten sposób, że dla każdego elementu w tablicy zastępuje do średnią z niego oraz elementu go poprzedzającego i elementu po nim następującego
+- `smooth` - funkcja wygładza elementy w tablicy, tzn. sprawia, że nie odstają one znacząco od średniego zachowania, w ten sposób, że dla każdego elementu w tablicy zastępuje do średnią z niego oraz elementu go poprzedzającego i elementu po nim następującego, czyli wylicza `(tab[i-1]+tab[i]+tab[i+1])/3.` 
 
 ## Zadanie 5
 
