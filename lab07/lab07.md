@@ -45,7 +45,7 @@ Uzupełni poniższy kod w taki sposób aby można było sortować instancje klas
 import java.util.Arrays;
 
 
-class Fruit implements Comparable{
+class Fruit implements Comparable<Fruit>{
 
     private String fruitName;
     private String fruitDesc;
