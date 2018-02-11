@@ -108,3 +108,12 @@ public class SortFruitObject{
 }
 ```
 
+## Zadanie 4 
+
+Napisz klasę `Sum`,  która wypisze sumę wszystkich liczbowych agumentów z którymi została uruchomiona, np. 
+
+```bash
+java Sum 1.2 3. ola ma 32 kota3
+Suma to: 36.2
+```
+
