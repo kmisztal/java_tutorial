@@ -12,7 +12,7 @@ Rozważmy dane
 | **Dallas**   | 967     | 1723   | 1548     | 781     | 1426  | 0      | 239     |
 | **Houston**  | 1087    | 1842   | 1627     | 810     | 1187  | 239    | 0       |
 
-oczywistym jest, że takie dane nie są niczym nadzwyczajmy, aby zareprezentować je w Javie musimy stworzyć następującą strokturę
+oczywistym jest, że takie dane nie są niczym nadzwyczajmy, aby zareprezentować je w Javie musimy stworzyć następującą strukturę
 
 ```java
 double[][] distances = {
@@ -28,7 +28,7 @@ double[][] distances = {
 
 Struktura ta to dwuwymiarowa tablica, gdzie `double[][]`to oznaczenie typu, mówiące, że w tablicy mamy dwa wymiary i przechowujemy w niej dane typu `double`. Natomiast `distances` to nazwa zmiennej.
 
-Załóżmy, że dokanliśmy deklaracji zmiennej
+Załóżmy, że dokonaliśmy deklaracji zmiennej
 
 ```java
 int[][] matrix;
@@ -70,7 +70,7 @@ Jako ciekawostkę należy podać fakt, że wiersze nie muszą być równej dług
 #### Jak przejść po wszytkich elementach tablicy dwuwymiarowej?
 
 ```java
-int [][] matrix = new int[10][10];
+int [][] matrix = new int[10][15];
 for(int row = 0; row < matrix.length; row++){
   for(int column = 0; column < matrix[row].length; column++){
     matrix[row][column] = (int) (Math.random() * 100);
