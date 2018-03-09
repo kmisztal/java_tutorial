@@ -435,3 +435,50 @@ Wewnątrz definicji klasy anonimowej możemy definiować atrybuty czy metody. W 
 
 Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
 
+# Wyrażenia lambda - po raz pierwszy
+
+```java
+List<String> names = Arrays.asList("Kasia", "Ania", "Zosia", "Bartek");
+```
+aby posortować tę listę można skorzystać z klasy anonimowej
+```java
+Collections.sort(names, new Comparator<String>() {
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.compareToIgnoreCase(o2);
+    }
+});
+```
+Czy na prawdę, aż tyle kodu jest konieczne? czy łatwo się w nim połapać?
+
+Tak naprawdę interfejs `Comparator` jest interfejsem funkcjynym, tzn. posiada tylko jedną metodę abstrakcyjną tutaj `compare(o1, o2)` więc możemy sobie wyobrazić go jako funkcję, która przyjmuje dwa parametry i zwraca wartość typu `int`:
+
+```
+(String o1, String o2) -> int
+```
+W miejsce komparatora możemy więc wstawić wyrażenie lambda, które odpowiada sygnaturze takiej funkcji, np.:
+```java
+(String s1, String s2) -> s1.compareToIgnoreCase(s2)
+```
+a jeśli kompilator się domyśli to nawet:
+```java
+(s1, s2) -> s1.compareToIgnoreCase(s2)
+```
+Cały kod wygląda wtedy tak:
+```java 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+ 
+public class ComparatorLambdaExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Kasia", "Ania", "Zosia", "Bartek");
+        //sortowanie aldabetyczne z uwzględnieniem wielkości liter
+        Collections.sort(names, (s1, s2) -> s1.compareToIgnoreCase(s2));
+        //metoda dorEach od Jav8 8 daje możliwości jak pętla for-each
+        //oczekuje argumentu typu java.util.function.Consumer, czyli
+        // (arg) -> void
+        names.forEach(arg -> System.out.println(arg));
+    }
+}
+```
