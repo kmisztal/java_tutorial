@@ -380,18 +380,58 @@ Głównym ograniczeniem/zaletą klas lokalnych jest ich zasięg. Podobnie jak w 
 ## Po co to wszystko?
 
 - Klas wewnętrznych używamy w sytuacji, w której klasa wewnętrzna nie ma sensu bez klasy zewnętrznej i jest z nią ściśle związana.
-```java
-Map<String, Integer> dayInMonths = new HashMap<>();
-dayInMonths.put("styczen", 31);
-dayInMonths.put("luty", 28);
-dayInMonths.put("marzec", 31);
- 
-for(Map.Entry<String, Integer> entry : dayInMonths.entrySet()) {
-    System.out.println(entry.getKey() + " ma " + entry.getValue() + " dni.");
-}
-```
+	```java
+	Map<String, Integer> dayInMonths = new HashMap<>();
+	dayInMonths.put("styczen", 31);
+	dayInMonths.put("luty", 28);
+	dayInMonths.put("marzec", 31);
+	 
+	for(Map.Entry<String, Integer> entry : dayInMonths.entrySet()) {
+		System.out.println(entry.getKey() + " ma " + entry.getValue() + " dni.");
+	}
+	```
 
 - Kolejnym powodem może być lepsza enkapsulacja kodu (ukrywanie szczegółów działania klasy wewnątrz). Dzięki temu, że klasy wewnętrzne mają dostęp nawet do prywatnych zasobów klas otaczających, te drugie  możemy bardziej „opakować”. Ukryć więcej szczegółów wewnątrz.
 
 ## Klasy anonimowe
+
+Klasy anonimowe to klasy definiowane w kodzie, które mają dokładnie jedną instancję. Definicja klasy anonimowej połączona jest z tworzeniem jej jedynej instancji. Klasy anonimowe zawsze są klasami wewnętrznymi.
+
+```java
+public interface GreetingModule {
+    void sayHello();
+}
+ 
+public void someMethod()
+    GreetingModule greeting = new GreetingModule() {
+        @Override
+        public void sayHello() {
+            System.out.println("good morning");
+        }
+    }
+}
+```
+
+W powyższym przykładzie kompilator tworzy nową klasę, która implementuje interfejs `GreetingModule`. W tym samym czasie tworzę jej nową instancję przy pomocy słowa kluczowego `new`. Upraszczając, można powiedzieć, że powyższy przykład to skrót:
+```java
+public interface GreetingModule {
+    void sayHello();
+}
+
+public class GreetingModuleImpl implements GreetingModule {
+    @Override
+    public void sayHello() {
+        System.out.println("good morning");
+    }
+}
+ 
+public void someMethod()
+    GreetingModule greeting = new GreetingModuleImpl();
+}
+```
+Wewnątrz definicji klasy anonimowej możemy definiować atrybuty czy metody. W praktyce sprowadza się to przeważnie do zaimplementowania metod interfejsu dla którego tworzymy klasę anonimową.
+
+> Uwaga: Jeśli klasa anonimowa implementuje interfejs to kompilator tworzy nową klasę, która implementuje dany interfejs - nie jest to na pewno instancja interfejsu!!!
+
+Do przejrzenia: https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
 
