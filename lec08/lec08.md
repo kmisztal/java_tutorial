@@ -1,4 +1,4 @@
-## Typy generyczne
+# Typy generyczne
 
 Dlaczego w poniższym kodzie uzyskujemy ostrzeżenie?
 > Note: ShowUncheckedWarning.java uses unchecked or unsafe operations.
@@ -289,3 +289,109 @@ private static void lowerBoundWildcard() {
 ```
 
 Do przejrzenia https://docs.oracle.com/javase/tutorial/java/generics/lowerBounded.html
+
+# Klasy wewnętrzne
+
+Istnieje kilka typów klas wewnętrznych:
+
+- klasy wewnętrzne - najczęstszy przypadek
+- statyczne klasy wewnętrzne,
+- lokalne klasy wewnętrzne,
+- anonimowe klasy wewnętrzne - bardzo popularny przypadek.
+
+
+## Klasy wewnętrzne
+Przykład - zwykła klasa `OuterClass` i klasa wewnętrzna `InnerClass`.
+
+```java
+public class OuterClass {
+    public class InnerClass {
+    }
+
+    public InnerClass instantiate() {
+        return new InnerClass();
+    }
+}
+```
+
+Podobnie jak w przypadku atrybutów czy metod, klasy wewnętrzne mogą mieć standardowe modyfikatory dostępu `public`, `protected` czy `private`. Brak modyfikatora dostępu także i tutaj jest poprawny.
+
+Modyfikatory dostępu użyte przed definicją klasy wewnętrznej działają identycznie jak w przypadku atrybutów, metod czy konstruktorów.
+
+### Przykład użycia
+Do stworzenia instancji klasy wewnętrznej potrzebujemy instancji klasy zewnętrznej. 
+```java
+private static void innerClassInstantiation() {
+    OuterClass outerClass = new OuterClass();
+    OuterClass.InnerClass instance1 = outerClass.instantiate();
+    OuterClass.InnerClass instance2 = outerClass.new InnerClass();
+}
+```
+Widzimy, że typ `OuterClass.InnerClass`, to nic innego jak odwołanie się do typu wewnętrznego. W tym fragmencie kodu tworzymy dwie instancje. Pierwsza z nich powstaje w wyniku wywołania metody `instantiate` z klasy `OuterClass`. 
+
+
+## Statyczne klasy wewnętrzne
+
+W języku Java istnieją także statyczne klasy wewnętrzne. Są to klasy wewnętrzne poprzedzone modyfikatorem `static`
+
+```java
+public class OuterClass2 {
+    public static class InnerClass2 {
+    }   
+ 
+    private InnerClass2 instantiate() {
+        return new InnerClass2();
+    }   
+}
+Taka konstrukcja zmienia sposób tworzeniu instancji statycznej klasy wewnętrznej.
+
+> Domyślnie, wszystkie wewnętrzne interfejsy i typy wyliczeniowe są statyczne, modyfikator static jest przed nimi zbędny (możesz spróbować go dodać, IDE powinno zwrócić Ci na to uwagę).
+
+### Przykład
+W odróżnieniu od standardowych klas wewnętrznych, nie potrzebujemy instancji klasy zewnętrznej do stworzenia instancji statycznej klasy wewnętrznej. 
+```java
+private static void staticInnerClassInstantiation() {
+    OuterClass2 outerClass = new OuterClass2();
+    OuterClass2.InnerClass2 instance1 = outerClass.instantiate();
+    OuterClass2.InnerClass2 instance2 = new OuterClass2.InnerClass2();
+}
+```
+
+## Lokalne klasy wewnętrzne
+
+```java
+private static void localClassInstantiation(String[] args) {
+    class LocalClass {
+        @Override
+        public String toString() {
+            return "Argumenty metody: " + Arrays.toString(args);
+        }
+    }   
+    LocalClass localClassInstance = new LocalClass();
+    System.out.println(localClassInstance);
+}
+```
+
+Tutaj wewnątrz metody tworzymy naszą lokalną klasę wewnętrzną LocalClass. Linijkę później tworzymy jej instancję i wywołujemy na niej metodę.
+
+Głównym ograniczeniem/zaletą klas lokalnych jest ich zasięg. Podobnie jak w przypadku zmiennych lokalnych, dostęp do klas lokalnych jest wyłącznie w bloku, w którym zostały zdefiniowane.
+
+
+## Po co to wszystko?
+
+- Klas wewnętrznych używamy w sytuacji, w której klasa wewnętrzna nie ma sensu bez klasy zewnętrznej i jest z nią ściśle związana.
+```java
+Map<String, Integer> dayInMonths = new HashMap<>();
+dayInMonths.put("styczen", 31);
+dayInMonths.put("luty", 28);
+dayInMonths.put("marzec", 31);
+ 
+for(Map.Entry<String, Integer> entry : dayInMonths.entrySet()) {
+    System.out.println(entry.getKey() + " ma " + entry.getValue() + " dni.");
+}
+```
+
+- Kolejnym powodem może być lepsza enkapsulacja kodu (ukrywanie szczegółów działania klasy wewnątrz). Dzięki temu, że klasy wewnętrzne mają dostęp nawet do prywatnych zasobów klas otaczających, te drugie  możemy bardziej „opakować”. Ukryć więcej szczegółów wewnątrz.
+
+## Klasy anonimowe
+
