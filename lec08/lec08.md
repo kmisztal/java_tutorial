@@ -482,3 +482,44 @@ public class ComparatorLambdaExample {
     }
 }
 ```
+
+### I jeszcze raz
+Wyrażenia lambda są w pewien sposób podobne do anonimowych klas, ponieważ można je określić jako anonimowe metody. Z tego wynika, że będą odpowiadały pojedynczym metodom, które można na przykład przekazać jako argument do innej metody. Rzeczywiście, wyrażenie lambda implementuje metodę zdefiniowaną w interfejsie funkcjonalnym. Czym zatem jest interfejs funkcjonalny? Jest to taki interfejs, który posiada tylko jedną metodę abstrakcyjną (niezaimplementowaną), może natomiast posiadać wiele metod domyślnych.
+
+Przy tworzeniu takich interfejsów dobrze jest wyraźnie zaznaczyć, że są one funkcjonalne używając adnotacji `@FunctionalInterface`.
+
+Generalnie struktura wyrażenia lambda wygląda tak:
+
+```
+(parametr1, parametr2,...) -> {
+	ciało lambdy
+}
+```
+
+Przy czym możliwe są różne modyfikacje tego wzorca. Na przykład może nie być wcale parametrów:
+
+```
+() -> {
+ciało lambdy
+}
+```
+
+Jeśli ciało lambdy zawiera tylko jedną linię kodu, nawiasy klamrowe są zbędne:
+
+```
+(parametr1) -> polecenie;
+```
+
+Jeśli jest tylko jeden parametr, można ominąć nawiasy:
+
+```
+parametr -> polecenie;
+```
+
+Przykład:
+```java
+@FunctionalInterface
+public interface Thinkable {
+    void think(String sentence);
+}
+```
