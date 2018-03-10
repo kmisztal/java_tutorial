@@ -309,6 +309,15 @@ private static void lowerBoundWildcard() {
 - nie można używać operatora `new` (`E e = new E();`),
 - nie można deklarować typów statycznych (`private static T v;`)
 - typów parametryzowanych (`List<Integer>`) nie można rzutować ani używać jako argument w operatorze `instanceof`
+- nie można używać tablic typów parametryzowanych (`new E[100]`),
+- typ generyczny nie może rozszerzać (bezpośrednio lub pośrednio) `Throwable`,
+- nie można przeciążać metod, których argumenty sprowadzają się do tego samego typu.
+```java
+public class Example {
+	public void print(Set<String> strSet) { }
+	public void print(Set<Integer> intSet) { }
+} 
+```
 
 Do przejrzenia https://docs.oracle.com/javase/tutorial/java/generics/lowerBounded.html
 
