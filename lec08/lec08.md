@@ -247,6 +247,21 @@ private static void plainWildcard() {
     method1(new FancyBox<>(new Apple()));
 }
 ```
+Poniższa metoda może przyjmować listy zawierające dowolne typy
+
+```java
+public static void printList(List<?> list) {
+	for (Object elem: list)
+		System.out.print(elem + " ");
+	System.out.println();
+}
+```
+Uwaga: metoda
+```java
+public static void printList(List<Object> list)
+```
+nie obsłuży `List<String>`, bo `List<String>` nie jest podklasą `List<Object>`.
+
 Do przejrzenia https://docs.oracle.com/javase/tutorial/java/generics/unboundedWildcards.html
 
 ## Wildcard upper bound
@@ -287,6 +302,13 @@ private static void lowerBoundWildcard() {
     //method4(new FancyBox<Square>(new Square())); // compilation error
 }
 ```
+
+## Ograniczenia
+
+- nie można używać typów prymitywnych (`Box<int>`),
+- nie można używać operatora `new` (`E e = new E();`),
+- nie można deklarować typów statycznych (`private static T v;`)
+- typów parametryzowanych (`List<Integer>`) nie można rzutować ani używać jako argument w operatorze `instanceof`
 
 Do przejrzenia https://docs.oracle.com/javase/tutorial/java/generics/lowerBounded.html
 
