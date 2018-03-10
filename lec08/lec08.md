@@ -374,9 +374,10 @@ public class OuterClass2 {
         return new InnerClass2();
     }   
 }
+```
 Taka konstrukcja zmienia sposób tworzeniu instancji statycznej klasy wewnętrznej.
 
-Domyślnie, wszystkie wewnętrzne interfejsy i typy wyliczeniowe są statyczne, modyfikator static jest przed nimi zbędny (możesz spróbować go dodać, IDE powinno zwrócić Ci na to uwagę).
+> Domyślnie, wszystkie wewnętrzne interfejsy i typy wyliczeniowe są statyczne, modyfikator static jest przed nimi zbędny (możesz spróbować go dodać, IDE powinno zwrócić Ci na to uwagę).
 
 ### Przykład
 W odróżnieniu od standardowych klas wewnętrznych, nie potrzebujemy instancji klasy zewnętrznej do stworzenia instancji statycznej klasy wewnętrznej. 
