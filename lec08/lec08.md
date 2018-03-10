@@ -43,10 +43,10 @@ class Chocolate{
     
 }
 
-class BoxForAnanas{
+class BoxForPie{
     private Pie object;
 
-    public BoxForAnanas(Pie object){
+    public BoxForPie(Pie object){
         this.object = object;
     }
     
