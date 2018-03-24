@@ -240,6 +240,13 @@ while(iterator.hasNext()) {
 ```
 jest to przykład tzn. zewnętrznej iteracji
 
-![external](https://github.com/kmisztal/java_tutorial/blob/master/lec04/images/ext.png)
+![external](https://github.com/kmisztal/java_tutorial/blob/master/lec09/images/ext.png)
 
+Możemy zrobić to lepiej wykorzystując wewnętrzną iterację
+```java
+long count = allArtists.stream()
+						.filter(artist -> artist.isFrom("London"))
+						.count();
+```
+![internela](https://github.com/kmisztal/java_tutorial/blob/master/lec09/images/int.png)
 
