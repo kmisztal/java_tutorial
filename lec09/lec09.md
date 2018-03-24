@@ -260,7 +260,7 @@ Dzieje się tak ponieważ:
 ```java
 allArtists.stream()
 .filter(artist -> artist.isFrom("London"));
-``
+```
 zakłada ograniczenie na strumień ale go nie konsumuje, można to zobaczyć wykorzystując 
 ```java
 allArtists.stream()
