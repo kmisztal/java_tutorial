@@ -245,8 +245,157 @@ jest to przykład tzn. zewnętrznej iteracji
 Możemy zrobić to lepiej wykorzystując wewnętrzną iterację
 ```java
 long count = allArtists.stream()
-						.filter(artist -> artist.isFrom("London"))
-						.count();
+			.filter(artist -> artist.isFrom("London"))
+			.count();
 ```
+Pierwsze co rzuca sie w oczy to `stream()` które odgrywa podobną rolę do `iterator()`. Zwraca ono klasę `Stream` która służy do budowania zaawansowanych operacji na kolekcjach.
+Mamy tutaj wewnętrzneą operację
 ![internela](https://github.com/kmisztal/java_tutorial/blob/master/lec09/images/int.png)
+A kod powyżej tak naprawdę:
+- znajduje artystów z Londynu - funkcja `filter`
+- zlicza ich - funkcja `count`
 
+Należy pamiętać, że mimo iż wygląda na to, że musimy przejść po liście dwa razy tak naprawdę przechodzimy tylko raz.
+Dzieje się tak ponieważ:
+```java
+allArtists.stream()
+.filter(artist -> artist.isFrom("London"));
+``
+zakłada ograniczenie na strumień ale go nie konsumuje, można to zobaczyć wykorzystując 
+```java
+allArtists.stream()
+	.filter(artist -> {
+		System.out.println(artist.getName());
+		return artist.isFrom("London");
+	});
+```
+Po uruchomieniu nic się nie wypisze.
+
+Dopiero dodanie konsumenta w postaci funkcji `count()` wypisze zawartość 
+```java
+long count = allArtists.stream()
+	.filter(artist -> {
+		System.out.println(artist.getName());
+		return artist.isFrom("London");
+	})
+	.count();
+```
+
+# Częste opracja na strumieniach
+
+## `collect(toList()`
+
+```java
+List<String> collected = Stream.of("a", "b", "c")
+	.collect(Collectors.toList());
+```
+Służy do wygenerowania listy ze strumieniach
+
+## `map`
+
+Jeśli chcemy przekształcić jedną wartość na inną wykorzystując zdefiniowaną przez nas funkcję to możemy zrobić tak
+```java
+List<String> collected = Stream.of("a", "b", "hello")
+	.map(string -> string.toUpperCase())
+	.collect(toList());
+```
+
+co jest równoważne
+```java
+List<String> collected = new ArrayList<>();
+for (String string : asList("a", "b", "hello")) {
+	String uppercaseString = string.toUpperCase();
+	collected.add(uppercaseString);
+}
+```
+
+## `filter`
+Jeśli chcemy przejrzeć zbiór danych i wybrać niektóre elementy
+```java
+List<String> beginningWithNumbers
+	= Stream.of("a", "1abc", "abc1")
+		.filter(value -> isDigit(value.charAt(0)))
+		.collect(toList());
+```
+co jest równoważne
+```java
+List<String> beginningWithNumbers = new ArrayList<>();
+for(String value : asList("a", "1abc", "abc1")) {
+	if (isDigit(value.charAt(0))) {
+		beginningWithNumbers.add(value);
+	}
+}
+```
+## `flatMap`
+
+Zamienia wartość na strumień i skleja strumienie razem
+```java
+List<Integer> together = Stream.of(asList(1, 2), asList(3, 4))
+	.flatMap(numbers -> numbers.stream())
+	.collect(toList());
+```
+
+## `max` oraz `min`
+
+```java
+List<Track> tracks = asList(new Track("Bakai", 524),
+				new Track("Violets for Your Furs", 378),
+				new Track("Time Was", 451));
+
+Track shortestTrack = tracks.stream()
+	.min(Comparator.comparing(track -> track.getLength()))
+	.get();
+```
+W przypadku tych funkcji musimy podać sposób sortowania a potem jest z górki.
+
+
+## `reduce`
+```java
+int count = Stream.of(1, 2, 3)
+	.reduce(0, (acc, element) -> acc + element);
+```
+gdy mamy kolekcję i chcemy ją ściągnąć do pojedynczej wartości
+
+co jest równoważne z 
+```java
+int acc = 0;
+for (Integer element : asList(1, 2, 3)) {
+	acc = acc + element;
+}
+```
+
+## Przykłady, przykłady, przykłady....
+
+### 1
+```java
+Set<String> origins = album.getMusicians()
+	.filter(artist -> artist.getName().startsWith("The"))
+	.map(artist -> artist.getNationality())
+	.collect(toSet());
+```
+
+### 2
+```java
+public Set<String> findLongTracks(List<Album> albums) {
+	Set<String> trackNames = new HashSet<>();
+	for(Album album : albums) {
+		for (Track track : album.getTrackList()) {
+			if (track.getLength() > 60) {
+				String name = track.getName();
+				trackNames.add(name);
+			}
+		}
+	}
+	return trackNames;
+}
+```
+a w Java 8
+```java
+public Set<String> findLongTracks(List<Album> albums) {
+	return albums.stream()
+		.flatMap(album -> album.getTracks())
+		.filter(track -> track.getLength() > 60)
+		.map(track -> track.getName())
+		.collect(toSet());
+}
+```
