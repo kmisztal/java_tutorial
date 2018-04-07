@@ -212,6 +212,7 @@ public class Person {
 
 ## `Consumer` vs. `Supplier`
 
+### `Supplier`
 ```java
 @FunctionalInterface
 public interface Supplier<T> {
