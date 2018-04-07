@@ -208,3 +208,76 @@ public class Person {
     }
 }
 ```
+
+
+## `Consumer` vs. `Supplier`
+
+```java
+@FunctionalInterface
+public interface Supplier<T> {
+    T get();
+}
+```
+Jedyną metodą w tym interfejsie jest `get()`. `Supplier` możemy wykorzystać jako “dostawce”, przykład:
+```java
+import java.util.function.*;
+
+public class Program {
+
+    static void display(Supplier<Integer> arg) {
+        System.out.println(arg.get());
+    }
+
+    public static void main(String[] args) {
+
+        // Pass lambdas to the display method.
+        // ... These conform to the Supplier class.
+        // ... Each returns an Integer.
+        display(() -> 10);
+        display(() -> 100);
+        display(() -> (int) (Math.random() * 100));
+    }
+}
+```
+
+### `Consumer`
+
+```java
+@FunctionalInterface
+public interface Consumer<T> {
+     void accept(T t);
+     ...
+}
+```
+Według definicji najważniejszą metodą jest metoda `accept()`, która przyjmuje dowolny typ, natomiast nic nie zwraca. Nasz interfejs `Consumer` wywołujemy poprzez:
+
+```java
+import java.util.function.*;
+
+public class Program {
+
+    static void display(int value) {
+
+        switch (value) {
+        case 1:
+            System.out.println("There is 1 value");
+            return;
+        default:
+            System.out.println("There are " + Integer.toString(value)
+                    + " values");
+            return;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        // This consumer calls a void method with the value.
+        Consumer<Integer> consumer = x -> display(x - 1);
+
+        // Use the consumer with three numbers.
+        consumer.accept(1);
+        consumer.accept(2);
+        consumer.accept(3);
+    }
+}
+```
