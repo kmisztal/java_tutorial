@@ -331,8 +331,7 @@ public class Program {
             System.out.println("There is 1 value");
             return;
         default:
-            System.out.println("There are " + Integer.toString(value)
-                    + " values");
+            System.out.println("There are " + Integer.toString(value) + " values");
             return;
         }
     }
