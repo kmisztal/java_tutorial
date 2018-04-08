@@ -209,6 +209,73 @@ public class Person {
 }
 ```
 
+`Optional` zawiera metodę `filter`
+```java
+// if the value is not present
+Optional carOptionalEmpty = Optional.empty();
+carOptionalEmpty.filter( x -> "250".equals( x.getPrice() ) ).ifPresent( x -> System.out.println( x.getPrice() + " is ok!" ) );
+
+// if the value does not pass the filter
+Optional carOptionalExpensive = Optional.of( new Car( "3333" ) );
+carOptionalExpensive.filter( x -> "250".equals( x.getPrice() ) ).ifPresent( x -> System.out.println( x.getPrice() + " is ok!" ) );
+
+// if the value is present and does pass the filter
+Optional carOptionalOk = Optional.of( new Car( "250" ) );
+carOptionalOk.filter( x -> "250".equals( x.getPrice() ) ).ifPresent( x -> System.out.println( x.getPrice() + " is ok!" ) );
+```
+oraz metodę `map`
+```java
+// non empty string map to its length -> we get the lenght as output (18)
+Optional stringOptional = Optional.of( "loooooooong string" );
+Optional sizeOptional = stringOptional.map( String::length ); //map from Optional to Optional
+System.out.println( "size of string " + sizeOptional.orElse( 0 ) );
+
+// empty string map to its length -> we get 0 as lenght
+Optional stringOptionalNull = Optional.ofNullable( null );
+Optional sizeOptionalNull = stringOptionalNull.map( x -> x.length()  ); // we can use Lambdas as we want
+System.out.println( "size of string " + sizeOptionalNull.orElse( 0 ) );
+```
+Można też
+```java
+Person p = getPerson(); 
+Address home = p.getAddress().orElse(Address.EMPTY);
+
+Address home = p.getAddress.orElseThrow(NoAddressException::new);
+```
+
+Zatem możemy zawsze być bezpieczni
+```java
+String unit = person.getAddress().getCity().getStreet().getUnit();
+```
+```java
+String unit= person.flatMap(Person::getAddress)
+                   .flatMap(Address::getCity)
+                   .flatmap(City::getStreet)
+                   .map(Street::getUnit)
+                   .orElse("UNKNOWN");
+```
+`Optional` jest często wykorzystywany, np. w poniższym kodzie zostanie rzucony wyjątek, bo lista jest pusta
+```java
+IntStream.of(10, 20, 30).filter(n -> n % 2 == 1).max().getAsInt();
+```
+chyba, że 
+```java
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
+//from  w w  w  .j a  v a  2 s. co m
+public class Main {
+  public static void main(String[] args) {
+
+    OptionalInt maxOdd = IntStream.of(10, 20, 30).filter(n -> n % 2 == 1).max();
+    if (maxOdd.isPresent()) {
+      int value = maxOdd.getAsInt();
+      System.out.println("Maximum odd  integer is " + value);
+    } else {
+      System.out.println("Stream is  empty.");
+    }
+  }
+}
+```
 
 ## `Consumer` vs. `Supplier`
 
