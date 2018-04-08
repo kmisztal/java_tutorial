@@ -72,7 +72,7 @@ zoo.getAnimals().getCats().getCat().getName()
 ```
 wtedy mamy napisać coś takiego?
 ```java
-		if (zoo != null){
+if (zoo != null){
             Animals animals = zoo.getAnimals();
             if (animals != null){
                 Cats cats = animals.getCats();
