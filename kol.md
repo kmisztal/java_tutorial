@@ -1,7 +1,7 @@
 1. Napisz program, który pobierze o użytkownika cztery łańcuchy znaków, które umieścisz w liście. 
 2. Następnie wypisz zawartość tej listy korzystając ze strumienia oraz mechanizmu odwoływania się do metody (przy pomocy ::).
 3. Następnie posortuj tę listę używając metody sort. Użyj wyrażenia lambda, które posortuje łańcuchy znaków malejąco po długości.
-  - Klasa B dziedziczy po klasie A oraz implementuje interfejs Szyfrator. Dodatkowo
+4. Klasa B dziedziczy po klasie A oraz implementuje interfejs Szyfrator. Dodatkowo
   - klasa A posiada pole typu całkowitoliczbowego o nazwie value inicjalizowane w konstruktorze
   - klasa A nie posiada konstruktora domyślnego
   - interfejs Szyfrator   posiada abstrakcyjną metodę code nie przyjmującą wartości i nic nie zwaracającą
