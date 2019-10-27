@@ -140,3 +140,67 @@ public class TestContinue {
 }
 ```
 
+# Funkcje
+
+Funkcje to specjalnie wydzielony fragment kodu umożliwający jego wielokrotne użycie. Funkcje definiujemy wykorzystując następującą konstrukcję:
+
+```java
+nazwa_typu_zwracanego nazwa_metody(typ_argumentu1 nazwa_argumentu1, typ_argumentu2 nazwa_argumentu2, ... ){
+  // co metoda robi
+  
+  
+  return .....; //zwrócić 
+}
+```
+
+Unikalny ifentyfikator funkcji, czyli sposób rozróżniania funkcji, składa się z nazwy funkcji oraz typów argumentów przjmowanych przez funkcję, np. dla funkcji:
+
+```java
+double max(double x, double y){
+  return x > y ? x : y;
+}
+```
+
+jej identyfikator to `max(double,double)`. Funkcje nie różnicujemy po typie zwracanym.
+
+### Variadic function
+
+Istnieje możliwość zdefiniowana funkcji przujmującej dowolną liczbę argumentów, wówczas wykorzystujemy specjalny znak `...` (trzy kropki). Przykład
+
+```java
+public class VF {
+    public static double sum(double ... a){
+        //https://en.wikipedia.org/wiki/Variadic_function
+        double ret = 0;
+        for(int i = 0; i < a.length; i++){
+            ret += a[i];
+        }
+        return ret;
+    }
+
+    public static void main(String [] args) {
+        double x = sum(2.4, 5.6);
+        System.out.println(x);
+
+        double y = sum(2, 3, 4);
+        System.out.println(y);
+    }
+}
+
+```
+
+Lista "dowolnych" parametrów dostępna jest w metodzie w postaci tablicy.
+
+### `void`
+
+Istanieje możliwość napisania metody, która nic nie zwraca, wówczas wykorztujemy słowo klucozwe `void` do określenia typu zwracanego przez funkcję:
+
+```java
+void print(){
+  System.out.println("Ala ma kota");
+}
+```
+
+
+
+
