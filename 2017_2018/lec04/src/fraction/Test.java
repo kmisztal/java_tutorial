@@ -13,9 +13,19 @@ public class Test {
         Fraction sum2 = a.add(b);
         System.out.println(sum2);
 
-        Fraction sum3 = a.addTo(b);
+        Fraction sum3 = a.sub(b);
         System.out.println(sum3);
         System.out.println("a="+a);
         System.out.println("b="+b);
+
+        Fraction e = Fraction.of(3, 6);
+        System.out.println(e);
+
+        System.out.println(Fraction.ZERO);
+        System.out.println(Fraction.ONE);
+        // C
+        System.out.println(
+                a.mult(b).div(e).mult(a).mult(Fraction.ZERO)
+        );
     }
 }
