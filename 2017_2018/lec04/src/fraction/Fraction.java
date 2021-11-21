@@ -1,18 +1,19 @@
 package fraction;
 
 public class Fraction {
-    int numerator;
-    int denominator = 1;
+    final int numerator;
+    final int denominator;
 
     public Fraction(int numerator, int denominator){
-        this.numerator = numerator;
         if(denominator == 0)
             throw new ArithmeticException("denominator is zero");
-        this.denominator = denominator;
-        if(this.denominator < 0){
-            this.denominator *= -1;
-            this.numerator *= -1;
+
+        if(denominator < 0){
+            denominator *= -1;
+            numerator *= -1;
         }
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     public Fraction(int numerator){
@@ -26,6 +27,21 @@ public class Fraction {
                 a.denominator * b.denominator
         );
     }
+
+    public Fraction add(Fraction b){
+        return new Fraction(
+                this.numerator * b.denominator
+                        + b.numerator * this.denominator,
+                this.denominator * b.denominator
+        );
+    }
+
+//    public Fraction addTo(Fraction b){
+//        this.numerator = this.numerator * b.denominator
+//                        + b.numerator * this.denominator;
+//        this.denominator = this.denominator * b.denominator;
+//        return this;
+//    }
 
     @Override
     public String toString() {
